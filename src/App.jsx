@@ -86,8 +86,11 @@ const App = () => {
 	}, [deBounceSearchTerm]);
 
 	useEffect(() => {
-		fetchTrendingMovies();
-	}, []);
+		// Only fetch trending movies if there's no active search
+		if (!searchTerm) {
+			fetchTrendingMovies();
+		}
+	}, [searchTerm]);
 
 	return (
 		<main>
@@ -106,8 +109,8 @@ const App = () => {
 						setSearchTerm={setSearchTerm}
 					/>
 				</header>
-
-				{trendingMovies.length > 0 && (
+				{/* Show trending movies only when there's no search term */}
+				{!searchTerm && trendingMovies.length > 0 && (
 					<section className="trending">
 						<h2>Trending Movies</h2>
 
@@ -123,8 +126,7 @@ const App = () => {
 							))}
 						</ul>
 					</section>
-				)}
-
+				)}{" "}
 				<section className="all-movies">
 					<h2>Popular</h2>
 					{isloading ? (
