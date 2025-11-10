@@ -49,7 +49,6 @@ const App = () => {
 			}
 
 			const data = await response.json();
-			console.log(data);
 
 			if (!data.results) {
 				seterrorMessage("No movies found");
