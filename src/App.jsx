@@ -87,10 +87,10 @@ const App = () => {
 
 	useEffect(() => {
 		// Only fetch trending movies if there's no active search
-		if (!searchTerm) {
+		if (!deBounceSearchTerm) {
 			fetchTrendingMovies();
 		}
-	}, [searchTerm]);
+	}, [deBounceSearchTerm]);
 
 	return (
 		<main>
@@ -128,7 +128,10 @@ const App = () => {
 					</section>
 				)}{" "}
 				<section className="all-movies">
-					<h2>Popular</h2>
+					<div className="mb-5">
+						{!searchTerm && <h2>Popular</h2>}
+					</div>
+
 					{isloading ? (
 						<div className="flex justify-center  item-center">
 							<span
