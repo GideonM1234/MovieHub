@@ -140,7 +140,29 @@ const App = () => {
 							></span>
 						</div>
 					) : errorMessage ? (
-						<p className="text-red-500"> {errorMessage}</p>
+						<div className="flex flex-col items-center justify-center py-20">
+							<h2 className="text-4xl font-bold text-red-500 mb-4">
+								404
+							</h2>
+							<p className="text-xl text-red-500">
+								{errorMessage}
+							</p>
+							<p className="text-gray-400 mt-2">
+								Try searching for a different movie
+							</p>
+						</div>
+					) : movieList.length === 0 && searchTerm ? (
+						<div className="flex flex-col items-center justify-center py-20">
+							<h2 className="text-4xl font-bold text-red-500 mb-4">
+								404
+							</h2>
+							<p className="text-xl text-red-500">
+								No movies found for "{searchTerm}"
+							</p>
+							<p className="text-gray-400 mt-2">
+								Try searching for a different movie
+							</p>
+						</div>
 					) : (
 						<ul>
 							{movieList.map((movie) => (
